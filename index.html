@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+  <div class="container" id="app">
+    <div class="row d-flex justify-content-center">
+      <h1 class="text-center display-1">To-do List</h3>
+    </div>
+    <div class="row">
+      <div class="col">
+        <h2 id="date" class="float-left"></h2>
+        <button @click="allDone" class="btn waves-effect waves-light float-right" type="button" name="button">Mark all done</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <form class="col s12 position-relative" @submit.prevent="addTodo">
+        <div class="row">
+          <div class="input-field col s12">
+            <input v-model="newTodo" type="text" name="newTodo" id="newTodo">
+            <label for="email" class="grey-text">Task</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Enter a task you would like to complete</span>
+            <button class="submit-btn col btn waves-effect waves-light float-left width-auto" type="submit" name="button">Add task
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="row align-items-cente">
+      <div class="col">
+        <ul class="collection">
+        <li v-for="todo in todos" class="collection-item">
+          <div class="row align-items-center">
+            <p class="col-1 float-left">
+              <label class="checkbox">
+                <input type="checkbox" v-model="todo.done" id="checkbox">
+                <span></span>
+              </label>
+            </p>
+            <span class="col float-left todo-text" :class="{ done: todo.done }">{{todo.title}}</span>
+            <button class="btn waves-effect waves-light float-left width-auto col-2" @click="removeTodo(todo)" type="button" name="button">Remove</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted float-right">Made with ❤ by <a href="https://github.com/samgamage">Sam Gamage</a></span>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
